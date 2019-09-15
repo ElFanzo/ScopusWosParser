@@ -8,7 +8,8 @@ class DataCtx:
     rowcount
       Count of inserted, changed or deleted records.
     """
-    __conn = connect('ScrapedData.db')
+
+    __conn = connect("ScrapedData.db")
     __cursor = None
 
     def __init__(self):
@@ -64,12 +65,14 @@ class DataCtx:
         :param path: The path to a file.
         """
         try:
-            with open(path, 'w', encoding='utf-8') as out:
+            with open(path, "w", encoding="utf-8") as out:
                 for row in self.select("select * from teachers"):
-                    out.write('|'.join([str(i) for i in row]) + '\n')
+                    out.write("|".join([str(i) for i in row]) + "\n")
         except OperationalError:
             remove(path)
-            print("There is no table in the database yet! Try again after creating the table.")
+            print(
+                "There is no table in the database yet! Try again after creating the table."
+            )
         else:
             print("All data has been successfully saved to the file.")
 
