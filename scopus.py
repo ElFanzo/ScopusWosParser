@@ -30,7 +30,10 @@ def scrape_scopus(file=None):
     results = pool.map(get_h_scopus, teachers_ids)
 
     if not file:
-        query = 'update teachers set h_index = ? where (h_index < ? or h_index = "None") and author_id = ?'
+        query = (
+            "update teachers set h_index = ? where (h_index < ? "
+            'or h_index = "None") and author_id = ?'
+        )
         params = [(i, i, *j) for i, j in zip(results, teachers_ids)]
         ctx.execute_many(query, params)
     else:

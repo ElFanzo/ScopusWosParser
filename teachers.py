@@ -8,7 +8,8 @@ from output import DataCtx
 def get_teachers(page):
     g = Grab()
     url = (
-        "https://kpfu.ru/main_page?p_sub=7860&p_order=1&p_id=0&p_period=on&p_rec_count=435&p_page=%d"
+        "https://kpfu.ru/main_page?p_sub=7860&p_order=1&p_id=0&p_period=on"
+        "&p_rec_count=435&p_page=%d"
         % page
     )
     g.go(url, timeout=90)

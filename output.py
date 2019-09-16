@@ -71,7 +71,8 @@ class DataCtx:
         except OperationalError:
             remove(path)
             print(
-                "There is no table in the database yet! Try again after creating the table."
+                "There is no table in the database yet! "
+                "Try again after creating the table."
             )
         else:
             print("All data has been successfully saved to the file.")
