@@ -30,7 +30,8 @@ def hist_h(labels, values):
         h = rect.get_height()
         w = rect.get_width()
         ax.text(
-            w + 5, rect.get_y() + h / 2.5, "{}".format(int(w)), ha="center", va="center"
+            w + 5, rect.get_y() + h / 2.5, "{}".format(int(w)), ha="center",
+            va="center"
         )
 
     plt.show()
@@ -116,9 +117,9 @@ if __name__ == "__main__":
         'and h_index <> "None" group by unit order by num desc' % inst
     )
     query6 = (
-        "select a.unit, b.num * 100.0 / count(*) as perc from teachers a, (%s) b "
+        "select a.unit, b.num * 100.0 / count(*) as p from teachers a, (%s) b "
         'where a.unit = b.unit and institute = "%s" group by a.unit '
-        "order by perc desc" % (query5, inst)
+        "order by p desc" % (query5, inst)
     )
 
     query7 = (
@@ -126,12 +127,15 @@ if __name__ == "__main__":
         'where h_index <> "None" group by institute order by max_h desc'
     )
     query8 = (
-        'select h_index, count(*) as num from teachers where h_index <> "None" '
+        "select h_index, count(*) as num from teachers "
+        'where h_index <> "None" '
         "group by h_index order by h_index"
     )
 
-    for i in ctx.select(query1):  # Вместо query1 подставляются остальные запросы
-        # labels.append(''.join([j[0] for j in i[0].split()])) # Сокращение слов
+    for i in ctx.select(query1):
+        # Вместо query1 подставляются остальные запросы
+        # Сокращение слов
+        # labels.append(''.join([j[0] for j in i[0].split()]))
         labels.append(i[0])  # Если сокращение ненужно
         values.append(i[1])
 

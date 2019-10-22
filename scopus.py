@@ -7,10 +7,12 @@ from output import DataCtx
 
 def get_h_scopus(author_id):
     g = Grab(transport="urllib3")
-    g.go("https://www.scopus.com/authid/detail.uri?authorId=%s" % author_id, timeout=20)
+    url = "https://www.scopus.com/authid/detail.uri?authorId=%s"
+    g.go(url % author_id, timeout=20)
 
+    xpath = '//*[@id="authorDetailsHindex"]/div/div[2]/span'
     try:
-        return g.doc.select('//*[@id="authorDetailsHindex"]/div/div[2]/span').text()
+        return g.doc.select(xpath).text()
     except DataNotFound:
         return "None"
 
