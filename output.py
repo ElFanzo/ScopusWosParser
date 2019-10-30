@@ -1,9 +1,9 @@
-from sqlite3 import connect, OperationalError
 from os import remove
+from sqlite3 import connect, OperationalError
 
 
 class DataCtx:
-    """ Data context class for storing scraped data in the database.
+    """Data context class for storing scraped data in the database.
 
     rowcount
       Count of inserted, changed or deleted records.
@@ -17,20 +17,20 @@ class DataCtx:
         self.__cursor = self.__conn.cursor()
 
     def execute(self, query: str, *params):
-        """ Executes SQl scripts.
+        """Executes SQl scripts.
 
-        :param query: A query string.
-        :param params: A query parameters.
+        :param query: a query string.
+        :param params: a query parameters.
         :return: rowcount.
         """
 
         return self.__exec(True, query, *params)
 
     def execute_many(self, query: str, *params):
-        """ Executes SQL scripts with many parameters.
+        """Executes SQL scripts with many parameters.
 
-        :param query: A query string.
-        :param params: A query parameters.
+        :param query: a query string.
+        :param params: a query parameters.
         :return: rowcount.
         """
 
@@ -47,11 +47,11 @@ class DataCtx:
         return self.rowcount
 
     def select(self, query: str, *params):
-        """ Selects rows from a table.
+        """Selects rows from a table.
 
-        :param query: A query string.
-        :param params: A query parameters.
-        :return: A list of selected records.
+        :param query: a query string.
+        :param params: a query parameters.
+        :return: a list of selected records.
         """
         self.__cursor.execute(query, *params)
         rows = self.__cursor.fetchall()
@@ -62,7 +62,7 @@ class DataCtx:
     def save_to_file(self, path: str):
         """ Saves all data from the Teachers table to a file.
 
-        :param path: The path to a file.
+        :param path: the path to a file.
         """
         try:
             with open(path, "w", encoding="utf-8") as out:
@@ -78,5 +78,5 @@ class DataCtx:
             print("All data has been successfully saved to the file.")
 
     def __del__(self):
-        """ Closes a connection after all operations. """
+        """Closes a connection after all operations."""
         self.__conn.close()
