@@ -5,12 +5,12 @@ from grab import Grab, DataNotFound
 from output import DataCtx
 
 
-def get_h_wos(id):
+def get_h_wos(id_):
     g = Grab()
     g.go("https://apps.webofknowledge.com/WOS_GeneralSearch_input.do")
 
     try:
-        g.doc.set_input_by_id(_id="value(input1)", value=id)
+        g.doc.set_input_by_id(_id="value(input1)", value=id_)
     except DataNotFound:
         print("Search is not available! It's necessary to login.")
         raise PermissionError
