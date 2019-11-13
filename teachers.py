@@ -46,7 +46,9 @@ def get_teachers(page):
             if resid or authid:
                 authid = authid.group(1) if authid else "None"
                 resid = resid.group(1) if resid else "None"
-                result += "|".join([man.text(), inst, unit, authid, resid]) + "/"
+                result += "|".join(
+                    [man.text(), inst, unit, authid, resid]
+                ) + "/"
 
     return result[:-1] if result else None
 
