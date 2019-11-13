@@ -16,6 +16,7 @@ colors = [
 
 
 def hist_h(labels, values):
+    """Plot a horizontal histogram."""
     fig, ax = plt.subplots()
     y_pos = [i for i in range(len(labels))]
 
@@ -37,6 +38,7 @@ def hist_h(labels, values):
 
 
 def hist_v(labels, values, group=False):
+    """Plot a vertical histogram."""
     width = 0.8
     align = "center"
     val = values
@@ -69,6 +71,7 @@ def hist_v(labels, values, group=False):
 
 
 def diag_circle(x, y):
+    """Plot a pie chart."""
     porcent = [100.0 * i / sum(y) for i in y]
 
     patches, texts = plt.pie(y, colors=colors, startangle=90, radius=1.2)

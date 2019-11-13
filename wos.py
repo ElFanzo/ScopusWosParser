@@ -6,6 +6,11 @@ from output import DataCtx
 
 
 def get_h_wos(id_):
+    """Get the h-index from Web of Science.
+
+    :param _id: a researcher's researcher_id value
+    :return: h-index
+    """
     g = Grab()
     g.go("https://apps.webofknowledge.com/WOS_GeneralSearch_input.do")
 
@@ -30,6 +35,10 @@ def get_h_wos(id_):
 
 
 def scrape_wos(file=None):
+    """Scrape h-indexes from Web of Science for all researchers.
+
+    :param file: an output file
+    """
     if not file:
         ctx = DataCtx()
         teachers_ids = ctx.select(

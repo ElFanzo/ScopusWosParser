@@ -6,6 +6,11 @@ from output import DataCtx
 
 
 def get_teachers(page):
+    """Parse KFU for teachers' data.
+
+    :param page: a required page
+    :return: a string or results
+    """
     g = Grab()
     url = (
         "https://kpfu.ru/main_page?p_sub=7860&p_order=1&p_id=0&p_period=on"
@@ -46,6 +51,7 @@ def get_teachers(page):
 
 
 def scrape_kfu():
+    """Scrape data for all KFU teachers."""
     ctx = DataCtx()
     pool = Pool(10)
 

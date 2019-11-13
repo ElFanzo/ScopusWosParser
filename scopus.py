@@ -6,6 +6,11 @@ from output import DataCtx
 
 
 def get_h_scopus(author_id):
+    """Get the h-index from Scopus.
+
+    :param author_id: a researcher's author_id value
+    :return: h-index
+    """
     g = Grab(transport="urllib3")
     url = "https://www.scopus.com/authid/detail.uri?authorId=%s"
     g.go(url % author_id, timeout=20)
@@ -18,6 +23,10 @@ def get_h_scopus(author_id):
 
 
 def scrape_scopus(file=None):
+    """Scrape h-indexes from Scopus for all researchers.
+
+    :param file: an output file
+    """
     if not file:
         ctx = DataCtx()
         teachers_ids = ctx.select(
