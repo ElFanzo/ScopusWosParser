@@ -1,6 +1,7 @@
 import re
 from multiprocessing import Pool
-from grab import Grab, DataNotFound
+
+from grab import DataNotFound, Grab
 
 from output import DataCtx
 
